@@ -1,16 +1,38 @@
-import React, { Component } from 'react';
-import Products from './Products';
+import React, { Component } from "react";
+import JumboTronComponent from "./JumboTronComponent";
+import Products from "./Products";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>My First React App!</h1>
-      <Products />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <JumboTronComponent>
+          This is a long sentence, and I want to insert content into the
+          jumbotron component from the outside.
+        </JumboTronComponent>
+        <Products />
+      </div>
+    );
+  }
 }
 
 export default App;
+
+
+
+// import React, { Component } from 'react';
+// import Products from './Products';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <h1>My First React App!</h1>
+//       <Products />
+//     </div>
+//   );
+// }
+
+// export default App;
 
 
 
