@@ -1,25 +1,42 @@
-import React, { Component } from "react";
-import JumboTronComponent from "./JumboTronComponent";
-import Products from "./Products";
 
+//chapter6
+import React, { Component } from "react";
+import UserForm from "./UserForm";
 class App extends Component {
   render() {
     return (
       <div>
-        <JumboTronComponent>
-          This is a long sentence, and I want to insert content into the
-          jumbotron component from the outside.
-        </JumboTronComponent>
-        <Products />
+        <UserForm />
       </div>
     );
   }
 }
-
 export default App;
 
 
+////chapter 5
+// import React, { Component } from "react";
+// import JumboTronComponent from "./JumboTronComponent";
+// import Products from "./Products";
 
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <JumboTronComponent>
+//           This is a long sentence, and I want to insert content into the
+//           jumbotron component from the outside.
+//         </JumboTronComponent>
+//         <Products />
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
+
+
+////chapter 4
 // import React, { Component } from 'react';
 // import Products from './Products';
 

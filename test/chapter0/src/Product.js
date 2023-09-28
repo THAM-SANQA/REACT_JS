@@ -3,9 +3,10 @@ import Rating from './Rating';
 import { Card } from 'react-bootstrap';
 
 class Product extends Component {
-    constructor(props) {
-        super(props)
-    }
+    ////code commented out as it is a useless constructor
+    // constructor(props) {
+    //     super(props)
+    // }
 
     render() {
         return (

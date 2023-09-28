@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Jumbotron, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 class JumboTronComponent extends Component {
-    constructor(props){
-        super(props);
-    }
+   ////code commented out as it is a useless constructor 
+  // constructor(props){
+    //     super(props);
+    // }
   render() {
     return (
       //Jumobotron excluded from bootstrap 5
