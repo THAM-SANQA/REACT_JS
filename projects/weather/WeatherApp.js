@@ -1,6 +1,5 @@
 import { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
-
 function WeatherApp() {
   const[cityName, setCityName] = useState("");
   const [weatherData, setWeatherData] = useState({})
@@ -8,13 +7,13 @@ function WeatherApp() {
      setCityName(e.target.value);
   }
     const fetchWeatherAPI = async() =>{
-      const APIkey = "ad6e66e036dc880affb681fffb90b6ae";
-      const APIurl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${APIkey}`;
+      const APIurl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units={ENTER_API_KEY};`
       const resp = await fetch(APIurl);
       const respJson = await resp.json();
       setWeatherData(respJson);
+      
+       
     }
-
 let handleMouseOut =(e) =>{
   
     fetchWeatherAPI();
@@ -39,5 +38,4 @@ let handleMouseOut =(e) =>{
    
   );
 }
-    
 export default WeatherApp;
