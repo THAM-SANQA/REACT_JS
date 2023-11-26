@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-//import * as firebase from 'firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { Table, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+//import {Nav, NavLink} from 'react-bootstrap';
 
 class User extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,8 +15,7 @@ class User extends Component {
             showDeleteDialog: false,
             selectedUser: {}
         };
-        //events
-        //this.add = this.add.bind(this);
+
         this.closeDeleteDialog = this.closeDeleteDialog.bind(this);
         this.delete = this.delete.bind(this);
     }
@@ -46,16 +46,12 @@ class User extends Component {
         });
     }
 
-    //where server requests and state updates occur
     componentDidMount() {
-        //accessing database
         firebase.database().ref('/')
             .on('value', snapshot => {
                 let returnArr = [];
                 snapshot.forEach(data => {
                     var user = data.val();
-                    //assigns key value to allow us to get
-                    //specific object to edit or delete 
                     user['key'] = data.key;
                     returnArr.push(user);
                 });
@@ -64,6 +60,7 @@ class User extends Component {
                 })
             });
     }
+
     render() {
         const listUsers = this.state.users.map((user) =>
             <tr key={user.key}>
@@ -81,7 +78,10 @@ class User extends Component {
         );
         return (
             <div>
-                <Button variant="primary" onClick={this.add}>Add</Button>
+                <Link to="/add">
+                    <Button variant="primary">Add</Button>
+                </Link>
+
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -94,22 +94,20 @@ class User extends Component {
                     <tbody>
                         {listUsers}
                     </tbody>
+                    <Modal show={this.state.showDeleteDialog} onHide={this.closeDeleteDialog}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Delete User</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <p>Are you sure you want to delete {this.state.selectedUser.username}?</p>
+                            <hr />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.delete}>Delete</Button>
+                            <Button onClick={this.closeDeleteDialog}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Table>
-                <Modal show={this.state.showDeleteDialog} onHide={this.closeDeleteDialog}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Delete User</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <p>Are you sure you want to delete
-                            {this.state.selectedUser.username}?</p>
-                        <hr />
-                    </Modal.Body>
-                    {/* gives options to delete or cancel, much like an alert */}
-                    <Modal.Footer>
-                        <Button onClick={this.delete}>Delete</Button>
-                        <Button onClick={this.closeDeleteDialog}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
             </div>
         );
     }
