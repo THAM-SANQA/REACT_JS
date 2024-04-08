@@ -1,12 +1,17 @@
 import React from 'react';
 
 export default function Basket(props) {
-    const {cartItems, onAdd, onRemove}=props;
+    const {cartItems, onAdd, onRemove, clearCart}=props;
     const itemsPrice =cartItems.reduce((a,c) => a+c.price * c.qty, 0);
     const taxPrice = itemsPrice * 0.15;
     const shippingPrice = itemsPrice > 3000 ? 0 : 350;
     const totalPrice = itemsPrice + taxPrice + shippingPrice;
     
+    const handleCheckout = () => {
+        clearCart();
+        alert("Cart has been cleared due to checkout.")
+    }
+
     return (
         <aside className='block col-1'>
             <h2>Cart Items</h2>
@@ -49,7 +54,7 @@ export default function Basket(props) {
                     </div>
                     <hr/>
                     <div className='row'>
-                        <button onClick={()=>alert ("Implement Checkout")}>
+                        <button onClick={handleCheckout}>
                             Checkout
                         </button>
                     </div>

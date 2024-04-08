@@ -28,6 +28,9 @@ const onRemove =(product) => {
       );
   }
 }
+const clearCart = () => {
+  setCartItems([]);
+}
 
   return (
     <div className="App">
@@ -35,7 +38,7 @@ const onRemove =(product) => {
 
       <div className="row">
         <Main onAdd={onAdd} products={products}></Main>
-        <Basket onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}></Basket>
+        <Basket onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} clearCart={clearCart}></Basket>
       </div>
     </div>
   );
